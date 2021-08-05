@@ -1,12 +1,17 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import DrawerNavigator from "./src/navigation/DrawNavigation";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
+import redusers from "./src/redusers";
+import Screen from "./src/screen1";
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
-  );
+const store = createStore(redusers,applyMiddleware(ReduxThunk))
+
+const App = () =>{
+  return(
+    <Provider store={store}>
+      <Screen/>
+    </Provider>
+  )
 }
 export default App

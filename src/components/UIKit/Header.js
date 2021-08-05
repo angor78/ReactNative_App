@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 4,
     height: 90,
-    paddingTop: 25,
+    paddingTop: 27,
   },
 
   iconRightStyle: {

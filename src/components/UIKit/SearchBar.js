@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     backgroundColor: "#fff",
     height: 40,
-    width:40,
+    //width:140,
     borderRadius:20,
   },
   searchStyle: {

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { Header, Layout, ImageCard, SearchBar } from "../components/UIKit";
 import { STARGATE_DETAILS } from "../routes";
+import { connect } from "react-redux";
+import { searchChanged } from "../actions";
 
 const url = "http://api.tvmaze.com/search/shows?q=stargate";
 
-export default class Main extends Component {
+class HomeScreen extends Component {
   state = {
     title: "STAR GATE",
     data: [],
@@ -22,9 +24,12 @@ export default class Main extends Component {
     }
   };
 
+  _onChangeText = text =>{this.props.searchChanged(text)}
+
   render() {
     const { title, data, visibleSearchBar } = this.state;
-    const { navigation } = this.props;
+    const { navigation,movie } = this.props;
+    console.log('this.props',this.props) ;
     return (
       <View>
         {visibleSearchBar ? (
@@ -32,8 +37,8 @@ export default class Main extends Component {
             colorRight={"#fff"}
             iconRight="magnify"
             placeholder="Search"
-            onChangeText={this.onChangeText}
-            value={"movie"}
+            onChangeText={this._onChangeText}
+            value={movie}
             onPressRight={() => this.setState({ visibleSearchBar: false })}
             onBlur={() => this.setState({ visibleSearchBar: true })}
           />
@@ -45,8 +50,6 @@ export default class Main extends Component {
             onPressRight={() => this.setState({ visibleSearchBar: true })}
           />
         )}
-
-
         <Layout>
           {data.map((item) => (
             <ImageCard
@@ -60,3 +63,9 @@ export default class Main extends Component {
     );
   }
 }
+const mapStateToProps = state =>{
+  return{
+    movie: state.search.movie
+  }
+}
+export default connect(mapStateToProps,{searchChanged})(HomeScreen)
