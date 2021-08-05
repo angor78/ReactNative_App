@@ -6,7 +6,8 @@ import { Text, ScrollView, StyleSheet, Image } from "react-native";
 const DetailsScreen = (data) => {
   const { h1, cover, text,container } = styles;
   const { name, image, summary } = data.route.params;
-  const img = image.original;
+  const img = image === null ? 'http://st03.kakprosto.ru/tumb/680/images/article/2011/9/9/1_5255184467fc05255184467ffd.jpg' : image.original
+
   return (
     <ScrollView style={container}>
       <Image style={cover} source={{ uri: img }} />

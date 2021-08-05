@@ -24,13 +24,17 @@ const styles = StyleSheet.create({
 const ImageBigCard = ({ data }) => {
   const { container, sub, cover } = styles
   const { image } = data
+  const img = image === null ? 'http://st03.kakprosto.ru/tumb/680/images/article/2011/9/9/1_5255184467fc05255184467ffd.jpg' : image.original
+
+  
   return (
     <View style={container}>
       <View style={sub}>
-        <Image style={cover} source={{ uri: image.original }} />
+        <Image style={cover} source={{ uri: img }} />
       </View>
     </View>
   )
 }
+
 
 export { ImageBigCard }
