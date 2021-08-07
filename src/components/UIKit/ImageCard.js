@@ -31,16 +31,19 @@ const styles = StyleSheet.create({
 const ImageCard = ({ data, onPress }) => {
   const { container, sub, h1, cover } = styles
   const { image, name } = data
+ const img = image === null ? 'http://st03.kakprosto.ru/tumb/680/images/article/2011/9/9/1_5255184467fc05255184467ffd.jpg' : image.medium
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={container}>
         <View style={sub}>
-          <Image style={cover} source={{ uri: image.medium }} />
+          <Image style={cover} source={{ uri: img }} />
         </View>
         <Text style={h1}>{name.toUpperCase()}</Text>
       </View>
     </TouchableOpacity>
   )
 }
+
+
 
 export { ImageCard }
